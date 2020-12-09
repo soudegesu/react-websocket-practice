@@ -19,6 +19,7 @@ export default function useChat({ endpoint, channel }: Props) {
   const connect = useCallback(() => {
     const socket = socketIOClient(endpoint, {
       query: { channel },
+      reconnection: true,
     });
     socket.on(MessageEvent.MESSAGE, (message: any) => {
       setRecievedMessages((prev) => [...prev, message]);
