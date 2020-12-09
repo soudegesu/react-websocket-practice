@@ -11,7 +11,7 @@ const MessagesViewer: FC = () => {
       {recievedMessages &&
         recievedMessages.length > 0 &&
         recievedMessages.map((data, i) => {
-          return <Box key={i}>{(data as any).message}</Box>;
+          return <Box key={i}>{data.message}</Box>;
         })}
     </Box>
   );

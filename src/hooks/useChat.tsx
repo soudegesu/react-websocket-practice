@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import socketIOClient from 'socket.io-client';
-import { recievedMessagesAtom, socketClientAtom } from '../states/atom';
+import { MessageData, recievedMessagesAtom, socketClientAtom } from '../states/atom';
 
 interface Props {
   endpoint: string;
@@ -21,7 +21,7 @@ export default function useChat({ endpoint, channel }: Props) {
       query: { channel },
       reconnection: true,
     });
-    socket.on(MessageEvent.MESSAGE, (message: any) => {
+    socket.on(MessageEvent.MESSAGE, (message: MessageData) => {
       setRecievedMessages((prev) => [...prev, message]);
     });
     socket.connect();

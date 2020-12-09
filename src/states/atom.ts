@@ -16,7 +16,11 @@ export const inputMessageAtom = atom<string>({
   default: '',
 });
 
-export const recievedMessagesAtom = atom<string[]>({
+export interface MessageData {
+  message: string;
+}
+
+export const recievedMessagesAtom = atom<MessageData[]>({
   key: 'recievedMessages',
   default: [],
 });
