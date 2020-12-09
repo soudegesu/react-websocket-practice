@@ -1,6 +1,9 @@
 import { AppBar, Box, Container, createStyles, makeStyles } from '@material-ui/core';
 import React, { FC } from 'react';
 import ChannelForm from '../components/ChannelForm';
+import MessageForm from '../components/MessageForm';
+import MessagesViewer from '../components/MessagesViewer';
+import PostMessageButton from '../components/PostMessageButton';
 import StartButton from '../components/StartButton';
 
 const appBarHeight = 40;
@@ -36,6 +39,17 @@ const TopPage: FC = () => {
           <Box className={classes.formBox}>
             <StartButton />
           </Box>
+        </Box>
+        <Box>
+          <Box className={classes.formBox}>
+            <MessageForm />
+          </Box>
+          <Box className={classes.formBox}>
+            <PostMessageButton />
+          </Box>
+        </Box>
+        <Box>
+          <MessagesViewer />
         </Box>
       </Container>
     </>

@@ -1,10 +1,28 @@
 import { Button } from '@material-ui/core';
 import React, { FC } from 'react';
+import { useRecoilValue } from 'recoil';
+import { channelAtom, endpointAtom } from '../states/atom';
+import useChat from '../hooks/useChat';
 
 const StartButton: FC = () => {
-  const handleOnClick = () => {};
+  const endpoint = useRecoilValue(endpointAtom);
+  const channel = useRecoilValue(channelAtom);
 
-  return (
+  const { connect, disconnect, connected } = useChat({ endpoint, channel });
+
+  const handleOnClick = () => {
+    connect();
+  };
+
+  const handleOnDisconnect = () => {
+    disconnect();
+  };
+
+  return connected ? (
+    <Button onClick={handleOnDisconnect} variant="contained" color="primary">
+      Stop
+    </Button>
+  ) : (
     <Button onClick={handleOnClick} variant="contained" color="primary">
       Start
     </Button>
